@@ -1,0 +1,30 @@
+{
+  "name": "t133-phase-shadow",
+  "version": "1.0.0",
+  "description": "T133:PHASE-SHADOW — async bot/scraper tarpit middleware for Express. Traps hostile traffic with f(β) phase-shadow drain. Three detection modes: path, agent, behavioral.",
+  "main": "index.js",
+  "scripts": {
+    "simulate": "node test/simulate.js",
+    "example": "node example_server.js"
+  },
+  "keywords": [
+    "tarpit", "honeypot", "security", "scraper", "middleware", "express", "bot-detection"
+  ],
+  "author": "David Lee Wise (ROOT0) / TriPod LLC",
+  "license": "SEE LICENSE IN LICENSE",
+  "peerDependencies": {
+    "express": ">=4.0.0"
+  },
+  "devDependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "index.js",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ]
+}

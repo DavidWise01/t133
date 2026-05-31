@@ -1,0 +1,1 @@
+{"format":"ROOT0-ATTRIBUTION-v1.0","project":"T133 Phase-Shadow Tarpit","version":"1.0.0","license":"CC-BY-ND-4.0","contributors":[{"name":"David Lee Wise","handle":"ROOT0","role":"architect"},{"name":"AVAN","model":"Claude Sonnet 4.6","role":"co-author","contribution":"README, package.json, repo structure, path fixes"}]}

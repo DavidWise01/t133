@@ -1,0 +1,4 @@
+test/
+logs/
+example_server.js
+.gitignore
