@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="t133 — a ROOT0/TriPod repository. T133:PHASE-SHADOW — async bot/scraper tarpit middleware for Express. fBeta coupling holds hostile connections for minutes. T031:BAIT · T059:ACCUMULATI">
+<title>t133 · ROOT0</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23a7a3c8' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%238a5fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+ *{box-sizing:border-box;margin:0;padding:0} html,body{min-height:100%}
+ body{background:#ece6f2;color:#2a2440;font-family:'Newsreader',serif;line-height:1.55}
+ .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+ .marq{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;padding:10px 0;border-bottom:1px solid #cdc6dc;color:#6a5fb0}
+ .marq a{color:#7a52d0;text-decoration:none} .marq a:hover{color:#4a3a90}
+ header{padding:40px 0 22px;text-align:center}
+ h1{font-family:'Press Start 2P',monospace;font-size:clamp(18px,5vw,34px);color:#5a4fb0;line-height:1.3;word-break:break-word}
+ .desc{font-size:clamp(15px,2.4vw,21px);font-weight:300;max-width:640px;margin:16px auto 0}
+ .badge{font-family:'Space Mono',monospace;font-size:11px;color:#6a5fb0;margin-top:18px;line-height:1.7;opacity:.85}
+ .sec{margin-top:30px} h2{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:2px;color:#8a5fe0;text-transform:uppercase;margin-bottom:12px}
+ .readme{white-space:pre-wrap;font-family:'Space Mono',monospace;font-size:13px;line-height:1.7;background:rgba(127,119,221,0.05);border:1px solid #cdc6dc;border-radius:9px;padding:16px 18px;max-height:560px;overflow:auto}
+ .muted{opacity:.6;font-style:italic}
+ .btn{display:inline-block;font-family:'Space Mono',monospace;font-size:13px;color:#fff;background:#7a52d0;border-radius:8px;padding:10px 18px;text-decoration:none;margin-top:6px}
+ .btn:hover{background:#5a3ab0}
+ footer{font-family:'Space Mono',monospace;font-size:11px;color:#6a5fb0;opacity:.7;margin-top:40px;border-top:1px solid #cdc6dc;padding-top:16px;text-align:center;line-height:1.8}
+ footer a{color:#7a52d0}
+</style></head><body><div class="wrap">
+<div class="marq"><a href="https://davidwise01.github.io/ud0/">◄ UD0</a> &nbsp;·&nbsp; <a href="https://davidwise01.github.io/atlas/">ATLAS</a> &nbsp;·&nbsp; ROOT0 / TriPod</div>
+<header><h1>t133</h1><p class="desc">T133:PHASE-SHADOW — async bot/scraper tarpit middleware for Express. fBeta coupling holds hostile connections for minutes. T031:BAIT · T059:ACCUMULATION · T065:CONTAINMENT</p>
+<div class="badge">governor · David Lee Wise (ROOT0) · instance AVAN (locked)<br>CC-BY-ND-4.0 · TRIPOD-IP-v1.1</div></header>
+<div class="sec"><h2>Readme</h2><div class="readme"># T133 · Phase-Shadow Tarpit
+
+[![TRIPOD-IP-v1.1](https://img.shields.io/badge/IP-TRIPOD--IP--v1.1-8b5cf6?style=flat-square)](#)
+[![License: CC-BY-ND-4.0](https://img.shields.io/badge/License-CC--BY--ND--4.0-lightgrey?style=flat-square)](LICENSE)
+[![Node: ≥16](https://img.shields.io/badge/node-%E2%89%A516-success?style=flat-square)](#)
+
+**T133:PHASE-SHADOW** — async Express middleware that traps bot and scraper traffic in a slow-drain connection, feeding it mathematically-plausible garbage until it gives up.
+
+&gt; T031:BAIT · T059:ACCUMULATION · T065:CONTAINMENT · T083:THE-GAP
+
+---
+
+## What It Does
+
+Instead of blocking hostile clients (which they detect and route around), T133 accepts their connection and holds it open — draining fake &quot;phase shadow topology&quot; data at controlled intervals using the H_3002 f(β) coupling function. The client wastes its connection pool, thread budget, and operator attention. Your real traffic is unaffected.
+
+**Three detection modes, all composable:**
+1. **Path match** — known scanner/harvester endpoints (`/wp-admin`, `/.env`, `/xmlrpc.php`, ...)
+2. **Agent match** — known hostile User-Agents (`Scrapy`, `sqlmap`, `nikto`, `masscan`, ...)
+3. **Behavioral** — rate anomaly (&gt;30 req/10s from one IP)
+
+**Architecture:**
+- Fully async — never blocks the event loop
+- Backpressure-aware writes — respects Node.js stream pressure
+- Per-connection state machine with concurrency governor (max 64 simultaneous traps)
+- f(β) coupling: `fBeta(β) = β²/(1-β²)` — phase shadow data grows non-linearly
+- JSONL telemetry log for analyst post-processing
+
+---
+
+## Quick Start
+
+```bash
+npm install t133-phase-shadow express
+```
+
+```js
+const express = require(&#x27;express&#x27;);
+const { create } = require(&#x27;t133-phase-shadow&#x27;);
+
+const app = express();
+
+// Auto-detect + trap: path, agent, and rate triggers
+app.use(create().handler());
+
+// Your real routes
+app.get(&#x27;/&#x27;, (req, res) =&gt; res.send(&#x27;OK&#x27;));
+
+app.listen(3000);
+```
+
+---
+
+## Mounting Patterns
+
+```js
+const t133 = create({
+  drain:    { intervalMs: 600, coherenceWall: 1000, jitterMs: 200 },
+  coupling: { beta: 0.80 },
+  log:      { console: true },
+});
+
+// 1. Auto-detect middleware (place BEFORE your routes)
+app.use(t133.handler());
+
+// 2. Explicit honeypot routes (never have legitimate traffic)
+app.use(&#x27;/wp-admin&#x27;,   t133.router());
+app.use(&#x27;/.env&#x27;,       t133.router());
+
+// 3. Hidden honeypot link in HTML — only bots f</div></div>
+<div class="sec"><a class="btn" href="https://github.com/DavidWise01/t133">view the code on GitHub →</a></div>
+<footer>t133 · a ROOT0 / TriPod repository · catalogued in the <a href="https://davidwise01.github.io/atlas/">atlas</a><br><a href="https://davidwise01.github.io/ud0/">← the biosphere</a></footer>
+</div></body></html>
